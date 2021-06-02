@@ -1,0 +1,4 @@
+R5T.D0078.Base - Base service definitions library for the IVisualStudioSolutionFileOperator service (similar to Soltana and Solitude).
+
+Goals
+

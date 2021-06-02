@@ -1,0 +1,4 @@
+R5T.D0078.Default - Default service implementations library for the IVisualStudioSolutionFileOperator service (similar to Soltana and Solitude).
+
+Goals
+
