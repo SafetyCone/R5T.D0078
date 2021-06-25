@@ -1,0 +1,2 @@
+R5T.D0078.T0032 - T0032 (IFileExtensions)-based solution file extensions.
+

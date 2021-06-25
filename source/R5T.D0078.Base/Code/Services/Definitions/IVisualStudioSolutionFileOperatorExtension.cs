@@ -11,5 +11,7 @@ namespace R5T.D0078
         /// This service will perform the translative work from a solution file path to the required solution name and directory path.
         /// </summary>
         Task Create(string solutionFilePath);
+
+        Task<string> GetSolutionFilePath(string solutionDirectoryPath, string solutionName);
     }
 }

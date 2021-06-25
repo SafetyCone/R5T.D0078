@@ -1,0 +1,4 @@
+R5T.D0078.A001 - Aggregation for the IVisualStudioSolutionFileOperator service.
+
+Goals
+
