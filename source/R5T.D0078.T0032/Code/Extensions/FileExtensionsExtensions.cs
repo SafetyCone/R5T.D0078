@@ -1,24 +1,21 @@
 ﻿using System;
 
 using R5T.T0032; /// <see cref="R5T.T0032.Documentation"/>
+using R5T.D0078.T0032;
 
 
 namespace System
 {
     public static class FileExtensionsExtensions
     {
-#pragma warning disable IDE0060 // Remove unused parameter
-
-        public static string Sln(this IFileExtension fileExtensions)
+        public static string Sln(this IFileExtension _)
         {
-            return "sln";
+            return FileExtensions.Sln;
         }
 
-        public static string Solution(this IFileExtension fileExtensions)
+        public static string Solution(this IFileExtension _)
         {
-            return fileExtensions.Sln();
+            return _.Sln();
         }
-
-#pragma warning restore IDE0060 // Remove unused parameter
     }
 }
