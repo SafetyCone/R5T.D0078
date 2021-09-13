@@ -26,12 +26,27 @@ namespace R5T.D0078
 
         public Task AddProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToAdd)
         {
-            return this.DotnetOperator.AddProjectReferenceToSolution(solutionFilePathToModify, projectReferenceFilePathToAdd);
+            return this.DotnetOperator.AddProjectReferenceToSolution(
+                solutionFilePathToModify,
+                projectReferenceFilePathToAdd);
         }
 
-        public Task RemoveProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToRemove)
+        public Task AddProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToAdd, string solutionFolder)
+        {
+            return this.DotnetOperator.AddProjectReferenceToSolution(
+                solutionFilePathToModify,
+                projectReferenceFilePathToAdd,
+                solutionFolder);
+        }
+
+        public Task RemoveProjectReferenceIdempotent(string solutionFilePathToModify, string projectReferenceFilePathToRemove)
         {
             return this.DotnetOperator.RemoveProjectReferenceFromSolution(solutionFilePathToModify, projectReferenceFilePathToRemove);
+        }
+
+        public Task<string[]> ListProjectReferenceRelativePaths(string solutionFilePath)
+        {
+            return this.DotnetOperator.ListSolutionProjectReferenceRelativePaths(solutionFilePath);   
         }
     }
 }
