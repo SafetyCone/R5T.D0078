@@ -31,6 +31,20 @@ namespace System
             }
         }
 
+        public static async Task AddProjectReferences(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
+            string solutionFilePathToModify,
+            IEnumerable<string> projectReferenceFilePathsToAdd,
+            string solutionFolderName)
+        {
+            foreach (var projectReferenceFilePath in projectReferenceFilePathsToAdd)
+            {
+                await visualStudioSolutionFileOperator.AddProjectReference(
+                    solutionFilePathToModify,
+                    projectReferenceFilePath,
+                    solutionFolderName);
+            }
+        }
+
         /// <summary>
         /// Selects <see cref="IVisualStudioSolutionFileOperator.RemoveProjectReferenceIdempotent(string, string)"/> as the default.
         /// </summary>
