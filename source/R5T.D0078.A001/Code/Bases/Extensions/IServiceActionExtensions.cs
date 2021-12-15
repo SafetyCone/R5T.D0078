@@ -3,37 +3,38 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using R5T.Dacia;
 using R5T.Lombardy;
 using R5T.Magyar;
 
 using R5T.D0077.A001;
+using R5T.T0062;
+using R5T.T0063;
 
 using R5T.D0078.Default;
 
 
 namespace R5T.D0078.A001
 {
-    public static class IServiceCollectionExtensions
+    public static class IServiceActionExtensions
     {
-        public static ServicesAggregation01 AddVisualStudioSolutionFileOperatorServices(this IServiceCollection services,
+        public static ServiceActionAggregation01 AddVisualStudioSolutionFileOperatorServices(this IServiceAction _,
             IServiceAction<IConfiguration> configurationAction,
             IServiceAction<IFileNameOperator> fileNameOperatorAction,
             IServiceAction<IStringlyTypedPathOperator> stringlyTypedPathOperatorAction)
         {
-            var dotnetExecutableServices = services.AddDotnetExecutableServices(
+            var dotnetExecutableServices = _.AddDotnetExecutableServices(
                 configurationAction);
 
-            var visualStudioSolutionFileOperatorAction = services.AddVisualStudioSolutionFileOperatorAction_Old(
+            var visualStudioSolutionFileOperatorAction = _.AddVisualStudioSolutionFileOperatorAction(
                 dotnetExecutableServices.DotnetOperatorAction);
 
-            var visualStudioSolutionFileOperatorExtensionAction = services.AddVisualStudioSolutionFileOperatorExtensionAction_Old(
+            var visualStudioSolutionFileOperatorExtensionAction = _.AddVisualStudioSolutionFileOperatorExtensionAction(
                 fileNameOperatorAction,
                 stringlyTypedPathOperatorAction,
                 visualStudioSolutionFileOperatorAction);
 
-            return new ServicesAggregation01()
-                .As<ServicesAggregation01, IServicesAggregation01Increment>(increment =>
+            return new ServiceActionAggregation01()
+                .As<ServiceActionAggregation01, IServiceActionAggregation01Increment>(increment =>
                 {
                     increment.VisualStudioSolutionFileOperatorAction = visualStudioSolutionFileOperatorAction;
                     increment.VisualStudioSolutionFileOperatorExtensionAction = visualStudioSolutionFileOperatorExtensionAction;
