@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
@@ -6,9 +7,9 @@ namespace R5T.D0078
 {
     public interface IVisualStudioSolutionFileOperator
     {
-        Task AddProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToAdd);
+        Task AddProjectReferences(string solutionFilePathToModify, IEnumerable<string> projectReferenceFilePathsToAdd);
 
-        Task AddProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToAdd, string solutionFolder);
+        Task AddProjectReferences(string solutionFilePathToModify, IEnumerable<string> projectReferenceFilePathsToAdd, string solutionFolder);
 
         /// <summary>
         /// Specifying the name and directory path matches the "dotnet new sln" command, and thus is the default.

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using R5T.D0077;
@@ -24,18 +25,18 @@ namespace R5T.D0078
             return this.DotnetOperator.NewSolution(solutionName, solutionDirectoryPath);
         }
 
-        public Task AddProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToAdd)
+        public Task AddProjectReferences(string solutionFilePathToModify, IEnumerable<string> projectReferenceFilePathsToAdd)
         {
-            return this.DotnetOperator.AddProjectReferenceToSolution(
+            return this.DotnetOperator.AddProjectReferencesToSolution(
                 solutionFilePathToModify,
-                projectReferenceFilePathToAdd);
+                projectReferenceFilePathsToAdd);
         }
 
-        public Task AddProjectReference(string solutionFilePathToModify, string projectReferenceFilePathToAdd, string solutionFolder)
+        public Task AddProjectReferences(string solutionFilePathToModify, IEnumerable<string> projectReferenceFilePathsToAdd, string solutionFolder)
         {
-            return this.DotnetOperator.AddProjectReferenceToSolution(
+            return this.DotnetOperator.AddProjectReferencesToSolution(
                 solutionFilePathToModify,
-                projectReferenceFilePathToAdd,
+                projectReferenceFilePathsToAdd,
                 solutionFolder);
         }
 

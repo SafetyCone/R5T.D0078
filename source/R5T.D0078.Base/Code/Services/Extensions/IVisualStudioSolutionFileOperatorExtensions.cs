@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+
+using R5T.Magyar;
 
 using R5T.D0078;
 
@@ -10,39 +10,40 @@ namespace System
 {
     public static class IVisualStudioSolutionFileOperatorExtensions
     {
-        public static Task AddProjectReferences(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
-            string solutionFilePathToModify,
-            params string[] projectReferenceFilePathsToAdd)
+        public static Task AddProjectReference(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
+            string solutionFilePathToModify, string projectReferenceFilePathToAdd)
         {
             return visualStudioSolutionFileOperator.AddProjectReferences(
                 solutionFilePathToModify,
-                projectReferenceFilePathsToAdd.AsEnumerable());
+                EnumerableHelper.From(projectReferenceFilePathToAdd));
         }
 
-        public static async Task AddProjectReferences(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
-            string solutionFilePathToModify,
-            IEnumerable<string> projectReferenceFilePathsToAdd)
+        public static Task AddProjectReference(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
+            string solutionFilePathToModify, string projectReferenceFilePathToAdd, string solutionFolder)
         {
-            foreach (var projectReferenceFilePath in projectReferenceFilePathsToAdd)
-            {
-                await visualStudioSolutionFileOperator.AddProjectReference(
-                    solutionFilePathToModify,
-                    projectReferenceFilePath);
-            }
+            return visualStudioSolutionFileOperator.AddProjectReferences(
+                solutionFilePathToModify,
+                EnumerableHelper.From(projectReferenceFilePathToAdd),
+                solutionFolder);
         }
 
-        public static async Task AddProjectReferences(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
-            string solutionFilePathToModify,
-            IEnumerable<string> projectReferenceFilePathsToAdd,
-            string solutionFolderName)
+        public static async Task AddProjectReferenceOkIfAlreadyAdded(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
+            string solutionFilePathToModify, string projectReferenceFilePathToAdd)
         {
-            foreach (var projectReferenceFilePath in projectReferenceFilePathsToAdd)
-            {
-                await visualStudioSolutionFileOperator.AddProjectReference(
+            // TODO, assumes that visual studio solution file operator can handle this. Should test for existence, then call.
+            await visualStudioSolutionFileOperator.AddProjectReference(
                     solutionFilePathToModify,
-                    projectReferenceFilePath,
-                    solutionFolderName);
-            }
+                    projectReferenceFilePathToAdd);
+        }
+
+        public static async Task AddProjectReferenceOkIfAlreadyAdded(this IVisualStudioSolutionFileOperator visualStudioSolutionFileOperator,
+            string solutionFilePathToModify, string projectReferenceFilePathToAdd, string solutionFolder)
+        {
+            // TODO, assumes that visual studio solution file operator can handle this. Should test for existence, then call.
+            await visualStudioSolutionFileOperator.AddProjectReference(
+                    solutionFilePathToModify,
+                    projectReferenceFilePathToAdd,
+                    solutionFolder);
         }
 
         /// <summary>
