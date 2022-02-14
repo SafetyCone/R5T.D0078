@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using R5T.T0064;
+
 
 namespace R5T.D0078
 {
-    public interface IVisualStudioSolutionFileOperatorExtension
+    [ServiceDefinitionMarker]
+    public interface IVisualStudioSolutionFileOperatorExtension : IServiceDefinition
     {
         /// <summary>
         /// A solution name and directory path must be extracted from the solution file path for use in the "dotnet new sln" command, and thus is the default.
