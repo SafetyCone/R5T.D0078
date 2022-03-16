@@ -49,5 +49,10 @@ namespace R5T.D0078
         {
             return this.DotnetOperator.ListSolutionProjectReferenceRelativePaths(solutionFilePath);   
         }
+
+        //public async Task AddSolutionFolder(string solutionFilePath, string solutionFolder)
+        //{
+        //    await this.AddProjectReferences(solutionFilePath, EnumerableHelper.Empty<string>(), solutionFolder);
+        //}
     }
 }
