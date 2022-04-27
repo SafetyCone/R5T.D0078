@@ -1,7 +1,8 @@
 using System;
 
-using R5T.Dacia;
 using R5T.Lombardy;
+
+using R5T.T0064;
 
 using IVisualStudioSolutionFileOperatorCore = R5T.D0078.IVisualStudioSolutionFileOperator;
 
@@ -9,7 +10,7 @@ using IVisualStudioSolutionFileOperatorCore = R5T.D0078.IVisualStudioSolutionFil
 namespace R5T.D0078.D001.I001
 {
     [ServiceImplementationMarker]
-    public class VisualStudioSolutionFileOperator : IVisualStudioSolutionFileOperator
+    public class VisualStudioSolutionFileOperator : IVisualStudioSolutionFileOperator, IServiceImplementation
     {
         public IVisualStudioSolutionFileOperatorCore Core { get; set; }
         public IStringlyTypedPathOperator StringlyTypedPathOperator { get; set; }

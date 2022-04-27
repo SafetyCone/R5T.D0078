@@ -1,9 +1,8 @@
-using System;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
 
 using R5T.Lombardy;
 
+using R5T.T0062;
 using R5T.T0063;
 
 using IVisualStudioSolutionFileOperatorCore = R5T.D0078.IVisualStudioSolutionFileOperator;
@@ -11,22 +10,20 @@ using IVisualStudioSolutionFileOperatorCore = R5T.D0078.IVisualStudioSolutionFil
 
 namespace R5T.D0078.D001.I001
 {
-    public static partial class IServiceCollectionExtensions
+    public static class IServiceActionExtensions
     {
         /// <summary>
         /// Adds the <see cref="VisualStudioSolutionFileOperator"/> implementation of <see cref="IVisualStudioSolutionFileOperator"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
-        public static IServiceCollection AddVisualStudioSolutionFileOperator(this IServiceCollection services,
+        public static IServiceAction<IVisualStudioSolutionFileOperator> AddVisualStudioSolutionFileOperatorAction(this IServiceAction _,
             IServiceAction<IStringlyTypedPathOperator> stringlyTypedPathOperatorAction,
             IServiceAction<IVisualStudioSolutionFileOperatorCore> visualStudioSolutionFileOperatorCoreAction)
         {
-            services
-                .Run(stringlyTypedPathOperatorAction)
-                .Run(visualStudioSolutionFileOperatorCoreAction)
-                .AddSingleton<IVisualStudioSolutionFileOperator, VisualStudioSolutionFileOperator>()
-                ;
+            var serviceAction = _.New<IVisualStudioSolutionFileOperator>(services => services.AddVisualStudioSolutionFileOperator(
+                stringlyTypedPathOperatorAction,
+                visualStudioSolutionFileOperatorCoreAction));
 
-            return services;
+            return serviceAction;
         }
     }
 }
