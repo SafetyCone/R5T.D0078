@@ -1,0 +1,3 @@
+R5T.D0078.X002 - IStringlyTypedPathOperator-based IVisualStudioSolutionFileOperator extensions.
+
+GOALS:

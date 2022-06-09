@@ -8,8 +8,9 @@ using R5T.D0077.X001;using R5T.T0064; /// <see cref="R5T.D0077.X001.Documentatio
 
 
 namespace R5T.D0078
-{[ServiceImplementationMarker]
-    public class VisualStudioSolutionFileOperator : IVisualStudioSolutionFileOperator,IServiceImplementation
+{
+    [ServiceImplementationMarker]
+    public class VisualStudioSolutionFileOperator : IVisualStudioSolutionFileOperator, IServiceImplementation
     {
         private IDotnetOperator DotnetOperator { get; }
 

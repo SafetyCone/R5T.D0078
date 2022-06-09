@@ -1,0 +1,3 @@
+R5T.D0078.X003 - Dependencies solution directory related IVisualStudioSolutionFileOperator extensions.
+
+GOALS:

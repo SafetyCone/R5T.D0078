@@ -1,0 +1,3 @@
+R5T.D0078.X004 - Best IVisualStudioSolutionFileOperator extensions.
+
+GOALS:

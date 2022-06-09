@@ -1,0 +1,3 @@
+R5T.D0078.X001 - IVisualStudioSolutionFileOperator extensions.
+
+GOALS:
