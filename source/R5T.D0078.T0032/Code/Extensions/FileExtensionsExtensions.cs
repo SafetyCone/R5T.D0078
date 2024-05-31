@@ -8,11 +8,13 @@ namespace System
 {
     public static class FileExtensionsExtensions
     {
+        [Obsolete("See R5T.Z0072.Z000")]
         public static string Sln(this IFileExtension _)
         {
             return FileExtensions.Sln;
         }
 
+        [Obsolete("See R5T.Z0072.Z002")]
         public static string Solution(this IFileExtension _)
         {
             return _.Sln();
